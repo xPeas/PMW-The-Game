@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec4125bee148079499f38e3d2da24b06, type: 3}
+  m_Name: e_helmet_obj
+  m_EditorClassIdentifier: 
+  armorType: 3
+  armorMesh: {fileID: 4711208715938537054, guid: cc7313960fab9a3469a56fbfe0cb58da,
+    type: 3}
+  materials:
+  - {fileID: 0}
+  baseBodyEnabled: 1
