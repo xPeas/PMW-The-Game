@@ -45,6 +45,11 @@ namespace Assets.Scripts.Managers
         private Vector3 currentVelocity;
         private float distToGround;
 
+        private System.Action<bool> GroundChanged;
+
+        //Collider Variables
+        private PhysicMaterial capsuleMatt;
+
         public CharState charState;
         public enum CharState
         {
@@ -80,6 +85,10 @@ namespace Assets.Scripts.Managers
 
             InitInventory();
             InitWeaponManager();
+
+            //Set up ground changing for physics material values
+            capsuleMatt = GetComponent<Collider>().material;
+            GroundChanged += UpdateFrictionValues;
         }
         
         void InitInventory()
@@ -288,7 +297,7 @@ namespace Assets.Scripts.Managers
         public void Tick(float d)
         {
             delta = d;
-            OnGround();
+            GroundCheck();
 
             switch (charState)
             {
@@ -454,7 +463,7 @@ namespace Assets.Scripts.Managers
         }
         #endregion
 
-        private void OnGround()
+        private void GroundCheck()
         {
             Vector3 origin = mTransform.position;
             Vector3 dir = -Vector3.up;
@@ -463,7 +472,13 @@ namespace Assets.Scripts.Managers
 
             origin.y += 0.4f;
             Debug.DrawRay(origin, dir * dis);
-            if (Physics.Raycast(origin, dir, out hit, dis, ignoreForGroundCheck))
+
+            bool newGroundCheck = Physics.Raycast(origin, dir, out hit, dis, ignoreForGroundCheck);
+
+            //Save the value if the onGround value has changed
+            bool groundChanged = newGroundCheck != states.onGround;
+
+            if (newGroundCheck)
             {
                 states.onGround = true;
                 states.isJumping = false;
@@ -473,6 +488,17 @@ namespace Assets.Scripts.Managers
                 states.onGround = false;
                 states.isJumping = true;
             }
+
+            //If the OnGround value has changed and there are functions listening, call GroundChanged 
+            if(groundChanged == true && GroundChanged != null)
+            {
+                GroundChanged(newGroundCheck);
+            }
+        }
+
+        private void UpdateFrictionValues(bool isOnGround)
+        {
+            capsuleMatt.staticFriction = isOnGround ? 1f : 0f;
         }
     }
 
