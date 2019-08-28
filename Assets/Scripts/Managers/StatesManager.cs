@@ -498,6 +498,7 @@ namespace Assets.Scripts.Managers
 
         private void UpdateFrictionValues(bool isOnGround)
         {
+            //0 friction for sliding agsin't walls, 1 friction to stop the sliding on slopes
             capsuleMatt.staticFriction = isOnGround ? 1f : 0f;
         }
     }
