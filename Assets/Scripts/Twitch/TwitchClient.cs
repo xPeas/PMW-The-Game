@@ -12,7 +12,7 @@ public class TwitchClient : MonoBehaviour
 {
     //the client object is defined within the TwitchLib Library
     public Client client;
-    private string channel_name = "ddewy"; //"paymoneywubby";
+    public string channelName = "paymoneywubby";
 
     public System.Action<ChatMessage> chatMessage;
     public System.Action<Subscriber> newSubscriber;
@@ -27,7 +27,7 @@ public class TwitchClient : MonoBehaviour
         //Set up the bot and tell which channel to join
         ConnectionCredentials credentials = new ConnectionCredentials(Secrets.TwitchAccountName, Secrets.AccessToken);
         client = new Client();
-        client.Initialize(credentials, channel_name);
+        client.Initialize(credentials, channelName);
         
         //Subscribe to any event the bot will listen to
         client.OnConnected += OnConnected;
