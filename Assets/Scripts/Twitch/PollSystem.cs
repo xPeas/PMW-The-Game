@@ -11,7 +11,9 @@ using UnityEditor;
 
 public class PollSystem : MonoBehaviour
 {
-    [Header("UI References")]
+    [Header("UI References")] 
+    public GameObject RootPanel;
+    
     public Text QuestionText;
 
     public Text VotesText;
@@ -88,6 +90,8 @@ public class PollSystem : MonoBehaviour
         timeRemaining = PollTimer;
         
         Invoke(nameof(EndPoll), PollTimer);
+        
+        RootPanel.SetActive(true);
 
         pollActive = true;
     }

@@ -105,6 +105,7 @@
     <Compile Include="Assets\Scripts\Scriptables\ControllerStats.cs" />
     <Compile Include="Assets\Scripts\Scriptables\Variables\InputVariables.cs" />
     <Compile Include="Assets\Scripts\Scriptables\Variables\StringVariable.cs" />
+    <Compile Include="Assets\Scripts\Twitch\ItemGiver.cs" />
     <Compile Include="Assets\Scripts\Twitch\PollSystem.cs" />
     <Compile Include="Assets\Scripts\Twitch\Secrets.cs" />
     <Compile Include="Assets\Scripts\Twitch\TwitchClient.cs" />

@@ -12,7 +12,7 @@ public class TwitchClient : MonoBehaviour
 {
     //the client object is defined within the TwitchLib Library
     public Client client;
-    private string channel_name = "paymoneywubby";
+    private string channel_name = "ddewy"; //"paymoneywubby";
 
     public System.Action<ChatMessage> chatMessage;
     public System.Action<Subscriber> newSubscriber;
