@@ -50,6 +50,8 @@ namespace Assets.Scripts.Managers
         //Collider Variables
         private PhysicMaterial capsuleMatt;
 
+        public WeaponScript currentWeapon;
+
         public CharState charState;
         public enum CharState
         {
@@ -423,6 +425,9 @@ namespace Assets.Scripts.Managers
                 anim.SetFloat("speed", aa.animSpeed);
             }
             ChangeState(CharState.overrideLayerInteracting);
+
+            if(currentWeapon != null)
+                currentWeapon.damageActive = true;
         }
 
         void HandleMovementAnim()

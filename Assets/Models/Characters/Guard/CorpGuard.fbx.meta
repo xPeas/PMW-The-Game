@@ -1,12 +1,22 @@
 fileFormatVersion: 2
 guid: b257fffdf433f3443847198d09c14d58
 ModelImporter:
-  serializedVersion: 26
+  serializedVersion: 27
   internalIDToNameTable:
   - first:
       74: 1312555187315912699
     second: Armature|Guard_Idle
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: 9547c427cb79cd94fa598bfcbe5d9609, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: skin
+    second: {fileID: 2100000, guid: 8cb7addf3c8213b40b9040d0c2268785, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -101,7 +111,6 @@ ModelImporter:
     normalSmoothingSource: 0
   referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
     serializedVersion: 3
     human: []
@@ -121,6 +130,7 @@ ModelImporter:
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

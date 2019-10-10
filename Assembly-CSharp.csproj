@@ -76,6 +76,9 @@
     <Compile Include="Assets\Scripts\Character\States.cs" />
     <Compile Include="Assets\Scripts\Controller\AnimatorHook.cs" />
     <Compile Include="Assets\Scripts\Controller\CameraController.cs" />
+    <Compile Include="Assets\Scripts\Dewy-Tests\JumpTest.cs" />
+    <Compile Include="Assets\Scripts\Dewy-Tests\PlayerCharacter.cs" />
+    <Compile Include="Assets\Scripts\Enemy\BasicEnemy.cs" />
     <Compile Include="Assets\Scripts\Enumerations\Gamephase.cs" />
     <Compile Include="Assets\Scripts\Enumerations\InputType.cs" />
     <Compile Include="Assets\Scripts\Inventory\Armor.cs" />
@@ -113,6 +116,7 @@
     <Compile Include="Assets\Scripts\UI\MainMenu\StartButton.cs" />
     <Compile Include="Assets\Scripts\UI\MainMenu\StartTestLevel.cs" />
     <Compile Include="Assets\Scripts\UI\MenuButton.cs" />
+    <Compile Include="Assets\Scripts\Weapons\WeaponScript.cs" />
     <Compile Include="Assets\Utilities\Editor Utilities\EditorUtilities.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
@@ -778,6 +782,16 @@
     <Reference Include="Boo.Lang">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.0a5/Editor/Data/MonoBleedingEdge/lib/mono/unityscript/Boo.Lang.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Cinemachine.csproj">
+      <Project>{12ECF594-8070-0AEA-19CE-56F7D580A1D0}</Project>
+      <Name>Cinemachine</Name>
+    </ProjectReference>
+    <ProjectReference Include="com.unity.cinemachine.editor.csproj">
+      <Project>{B15987D7-0110-A92D-AAF4-87051F77565D}</Project>
+      <Name>com.unity.cinemachine.editor</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
