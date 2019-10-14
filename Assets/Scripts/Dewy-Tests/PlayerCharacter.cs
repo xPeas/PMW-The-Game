@@ -15,7 +15,8 @@ public class PlayerCharacter : MonoBehaviour
     public float movementSpeed = 3f;
     public float acceleration = 3f;
     public float StoppingAcceleration = 9f;
-    
+    [Range(0f, 1f)]
+    public float slideFriction = 0.5f;
     public float RotationSpeed = 90f;
     
     [Header("Jump Values")]
@@ -30,6 +31,7 @@ public class PlayerCharacter : MonoBehaviour
     public bool grounded;
 
     [SerializeField] private Vector3 _velocity;
+    [SerializeField] private Vector3 floorNormal; 
     
     //Animation variables
     private static readonly int _animSpeed = Animator.StringToHash("speed");
@@ -68,8 +70,19 @@ public class PlayerCharacter : MonoBehaviour
         _velocity = Vector3.MoveTowards(_velocity, targetVelocity, 
             Time.deltaTime * (input.sqrMagnitude > 0f ? acceleration : StoppingAcceleration));
         _velocity += Physics.gravity * Time.deltaTime;
-        moveFlags = charController.Move(_velocity * Time.deltaTime);
-        grounded = (moveFlags & CollisionFlags.CollidedBelow) != 0;
+        
+        Vector3 slopeMovement = Vector3.zero;
+        //Adding Sliding Movement for slopes
+        if (!grounded)
+        {
+            slopeMovement.x += (1f - floorNormal.y) * floorNormal.x * (1f - slideFriction);
+            slopeMovement.z += (1f - floorNormal.y) * floorNormal.z * (1f - slideFriction);
+        }
+        
+        moveFlags = charController.Move((_velocity * Time.deltaTime) + slopeMovement);
+        
+        //is grounded check
+        grounded = ((moveFlags & CollisionFlags.CollidedBelow) != 0 && Vector3.Angle(floorNormal, Vector3.up) < charController.slopeLimit);
         
         if (grounded)
         {
@@ -145,5 +158,10 @@ public class PlayerCharacter : MonoBehaviour
         if (cross.y < 0)
             angle = -angle;
         return angle;
+    }
+
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        floorNormal = hit.normal;
     }
 }
